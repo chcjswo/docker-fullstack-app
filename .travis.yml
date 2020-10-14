@@ -21,3 +21,13 @@ after_success:
   - docker push chcjswo/docker-frontend
   - docker push chcjswo/docker-backend
   - docker push chcjswo/docker-nginx
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'ap-northeast-2'
+  app: 'docker-fullstack-app'
+  env: 'DockerFullstackApp-env'
+  bucket_name: s3_bucket_name
+  bucket_path: 'docker-fullstack-app'
+  on:
+    branch: master
